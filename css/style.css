@@ -1,0 +1,319 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+
+  background-color: #f3f4f6;
+}
+
+
+.container-custom {
+  max-width: 1280px;
+  min-height: 96vh; /* ✅ min-height au lieu de height */
+  overflow-y: auto; /* ✅ autorise le scroll vertical */
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
+.image-left {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.image-slide {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 2s ease-out;
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.image-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;
+  background: linear-gradient(to bottom right, rgba(0,0,0,0.4), rgba(0,0,0,0.1));
+  z-index: 3;
+}
+
+.form-section {
+  padding: 2rem 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh !important;
+  overflow-y: auto !important;
+}
+
+
+.form-avatar {
+  width: 68px;
+  height: 68px;
+  margin: 2.5rem auto 1.5rem auto;
+  display: block;
+}
+.form-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+  color: #171923;
+}
+
+.form-control,
+.form-select {
+  border: none;
+  border-bottom: 1px solid #d1d5db;
+  border-radius: 0;
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
+  background-color: transparent;
+  font-size: 0.95rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #22c55e;
+  box-shadow: none;
+}
+
+.btn-submit {
+  background: linear-gradient(to right, #22c55e, #14b8a6);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  padding: 0.6rem 2.1rem;
+  font-size: 1.08rem;
+  border-radius: 22px;
+  transition: background 0.3s;
+}
+
+.btn-submit:hover {
+  background: linear-gradient(to right, #14b8a6, #22c55e);
+}
+.btn-back {
+  background: #ff8547;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  padding: 0.6rem 2.1rem;
+  font-size: 1.08rem;
+  border-radius: 22px;
+  transition: background 0.2s;
+}
+.btn-back:hover {
+  background: #e25c1a;
+}
+
+
+.progress-bar-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #1c64f2;
+  font-size: 1.1rem;
+  border: 2px solid #e5e7eb;
+  transition: all 0.2s;
+}
+.circle.active,
+.circle.done {
+  background: #1c64f2;
+  color: #fff;
+  border-color: #1c64f2;
+}
+.line {
+  flex: 1 1 0;
+  height: 3px;
+  background: #e5e7eb;
+  margin: 0 0.1rem;
+}
+.line.active {
+  background: #1c64f2;
+}
+.steps-labels span {
+  min-width: 60px;
+  text-align: center;
+  font-size: 0.97rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.form-label .text-danger {
+  font-weight: bold;
+  margin-left: 3px;
+  font-size: 1rem;
+}
+
+
+/* Etapes */
+.step-form { display: none !important;
+
+  animation: fadeInSlide 0.7s;
+
+}
+
+/*.step-form.active-step {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+*/
+.step-form {
+  border: 1px dashed red; /* pour voir visuellement les blocs */
+}
+
+@keyframes fadeInSlide {
+  0% { opacity: 0; transform: translateX(30px);}
+  100% { opacity: 1; transform: translateX(0);}
+}
+.step-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.8rem; color: #2563eb; }
+
+/* 🌐 Écrans très larges (grands desktops > 1440px) */
+@media (min-width: 1440px) {
+  .container-custom {
+    max-width: 1400px;
+    margin: auto;
+  }
+}
+
+/* 💻 Écrans standards (entre 992px et 1439px) */
+@media (min-width: 992px) and (max-width: 1439px) {
+  .container-custom {
+    max-width: 96%;
+  }
+}
+
+/* 📱 Tablettes (768px à 991px) */
+/* ✅ TABLETTES (768px à 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  html, body {
+    height: auto;
+    overflow: auto;
+  }
+
+  .container-custom {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  .image-left {
+    height: 300px;
+    width: 100%;
+    display: block;
+    position: relative;
+  }
+
+  .form-section {
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* ✅ MOBILES (moins de 768px) */
+@media (max-width: 767px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    overflow-y: auto !important;
+    background-color: #f3f4f6;
+    .step-form .row { flex-direction: column; }
+  }
+
+  .container-custom {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    min-height: 100vh; /* ✅ FORCÉ pour que tout le contenu soit visible */
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+  }
+
+  .image-left {
+    display: none !important;
+  }
+
+  .form-section {
+    width: 100%;
+    padding: 3.5rem 1.25rem 2rem 1.25rem; /* ✅ AJOUT D’ESPACE EN HAUT */
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+
+  .form-avatar {
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+
+  .form-title {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-submit {
+    margin-top: 2rem;
+  }
+}
+
+
+
+
+.step-form.active-step {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  height: auto !important;
+  overflow: visible !important;
+  min-height: 500px !important; /* 👈 FORCE UNE HAUTEUR MINIMALE */
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+.form-section {
+  overflow-y: auto !important;
+  max-height: 100vh !important;
+}
+
+.container-custom {
+  overflow-y: auto !important;
+}
